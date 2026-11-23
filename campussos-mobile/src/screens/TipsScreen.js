@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Linking, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { io } from 'socket.io-client';
-import { useAuth } from '../AuthContext';
 import { API_URL, INFIRMARY_NUMBER } from '../config';
 import { FIRST_AID } from '../data/firstAid';
 import { STATUS_LABELS } from '../data/options';
@@ -36,18 +35,27 @@ function Stepper({ status }) {
   );
 }
 
+// Returns the new status for the shown incident: the event's status when the
+// event is for that incident, otherwise the current status unchanged.
+export function applyIncidentUpdate(currentStatus, incidentId, event) {
+  if (!event || typeof event !== 'object') return currentStatus;
+  return event._id === incidentId ? event.status : currentStatus;
+}
+
 export default function TipsScreen({ route, navigation }) {
-  const { category, via, incidentId } = route.params;
-  const { token } = useAuth();
+  const { category, via, incidentId, deviceId } = route.params;
   const [status, setStatus] = useState('PENDING');
 
-  // Live status updates ("on the way") when the alert was sent online
+  // Live status updates ("on the way") when the alert was sent online.
+  // The socket is identified by the same Device_ID that was sent with the alert.
   useEffect(() => {
-    if (via !== 'app') return;
-    const socket = io(API_URL, { auth: { token }, transports: ['websocket'] });
-    socket.on('incident:update', (inc) => { if (inc._id === incidentId) setStatus(inc.status); });
+    if (via !== 'app' || !incidentId || !deviceId) return;
+    const socket = io(API_URL, { auth: { deviceId }, transports: ['websocket'] });
+    socket.on('incident:update', (inc) => {
+      setStatus((current) => applyIncidentUpdate(current, incidentId, inc));
+    });
     return () => socket.disconnect();
-  }, [via, token, incidentId]);
+  }, [via, deviceId, incidentId]);
 
   const sms = via === 'sms';
   return (

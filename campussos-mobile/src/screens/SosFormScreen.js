@@ -3,18 +3,17 @@ import { ActivityIndicator, Alert, ScrollView, StyleSheet, Text, TouchableOpacit
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import * as Location from 'expo-location';
-import * as SMS from 'expo-sms';
 import NetInfo from '@react-native-community/netinfo';
-import { useAuth } from '../AuthContext';
-import { api } from '../api';
-import { INFIRMARY_NUMBER } from '../config';
+import { useDevice } from '../DeviceContext';
+import { api, isDeliveryFailure } from '../api';
+import { openSmsFallback } from '../sms';
 import { CATEGORIES, CATEGORY_ICONS, CRITICAL_STATUSES, PATIENT_STATUSES, SEXES } from '../data/options';
 import { Button, Chip, Input, SectionLabel } from '../components/ui';
 import { colors, radius } from '../theme';
 
 export default function SosFormScreen({ route, navigation }) {
   const forSelf = route.params.forSelf;
-  const { token } = useAuth();
+  const { getDeviceId } = useDevice();
   const insets = useSafeAreaInsets();
   const [category, setCategory] = useState('MEDICAL_EMERGENCY');
   const [patientStatus, setPatientStatus] = useState('CONSCIOUS_BREATHING');
@@ -40,27 +39,58 @@ export default function SosFormScreen({ route, navigation }) {
     })();
   }, []);
 
+  // Opens the pre-filled SMS to the infirmary and moves to Tips if it opened.
+  async function sendBySms(details) {
+    setBusy(true);
+    let opened = false;
+    try {
+      opened = await openSmsFallback(details);
+    } catch (e) {
+      Alert.alert('Could not open SMS', e.message);
+    }
+    if (!opened) { setBusy(false); return; }
+    navigation.replace('Tips', { category: details.category, via: 'sms' });
+  }
+
   async function send() {
     if (!coords && !place.trim()) return Alert.alert('Add a location', 'Turn on location or describe where you are.');
     setBusy(true);
-    const patient = { sex, age: Number(age) || undefined };
-    const net = await NetInfo.fetch();
-    const online = net.isConnected && net.isInternetReachable !== false;
+    const details = { category, patientStatus, sex, age, coords, place, nature };
+    let online = false;
     try {
-      if (!online) throw Object.assign(new Error('offline'), { offline: true });
-      if (!coords) throw new Error('GPS is needed to send online. Move outside or use SMS.');
+      const net = await NetInfo.fetch();
+      online = !!net.isConnected && net.isInternetReachable !== false;
+    } catch {
+      online = false;
+    }
+
+    // Offline: keep the SMS fallback and send no request.
+    if (!online) return sendBySms(details);
+
+    if (!coords) {
+      setBusy(false);
+      return Alert.alert('Could not send alert', 'GPS is needed to send online. Move outside or use SMS.');
+    }
+
+    const patient = { sex, age: Number(age) || undefined };
+    try {
+      const deviceId = await getDeviceId();
       const incident = await api('/incidents', {
-        method: 'POST', token,
-        body: { forSelf, patient, nature, category, patientStatus, location: { ...coords, description: place } },
+        method: 'POST',
+        timeoutMs: 10000,
+        body: { deviceId, forSelf, patient, nature, category, patientStatus, location: { ...coords, description: place } },
       });
-      navigation.replace('Tips', { category, incidentId: incident._id, via: 'app' });
+      navigation.replace('Tips', { category, incidentId: incident._id, deviceId, via: 'app' });
     } catch (e) {
-      if (!e.offline) { setBusy(false); return Alert.alert('Could not send alert', e.message); }
-      // Offline fallback: pre-filled SMS to the infirmary
-      const body = ['SOS', category, patientStatus, sex, age || '', coords ? `${coords.lat.toFixed(5)},${coords.lng.toFixed(5)}` : '', place || nature].join('|');
-      if (!(await SMS.isAvailableAsync())) { setBusy(false); return Alert.alert('No connection', `Call the infirmary at ${INFIRMARY_NUMBER}.`); }
-      await SMS.sendSMSAsync([INFIRMARY_NUMBER], body);
-      navigation.replace('Tips', { category, via: 'sms' });
+      setBusy(false);
+      if (isDeliveryFailure(e)) {
+        // Form state is untouched, so "Try again" just dismisses and the user can resend.
+        return Alert.alert('Alert not delivered', 'Your alert did not reach the infirmary.', [
+          { text: 'Try again' },
+          { text: 'Send by SMS', onPress: () => sendBySms(details) },
+        ]);
+      }
+      Alert.alert('Could not send alert', e.message);
     }
   }
 

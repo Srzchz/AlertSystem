@@ -1,0 +1,850 @@
+{
+  "pbtResults": {
+    "7.2 Add Vitest and write property test for reporter label": {
+      "status": "passed",
+      "lastRunTimestamp": 1795425353967
+    },
+    "2.6 Write property test for update emit targets": {
+      "status": "passed",
+      "lastRunTimestamp": 1795425464239
+    },
+    "9.2 Write property test for delivery-failure classification": {
+      "status": "passed",
+      "lastRunTimestamp": 1795425715341
+    },
+    "3.2 Write property test for incident payload shape": {
+      "status": "passed",
+      "lastRunTimestamp": 1795425716308
+    },
+    "9.4 Write property test for SMS body round trip": {
+      "status": "passed",
+      "lastRunTimestamp": 1795425894309
+    },
+    "2.4 Write property test for invalid category or location": {
+      "status": "passed",
+      "lastRunTimestamp": 1795425996497
+    },
+    "4.2 Write property test for socket room assignment": {
+      "status": "passed",
+      "lastRunTimestamp": 1795426013267
+    },
+    "2.3 Write property test for valid submissions": {
+      "status": "passed",
+      "lastRunTimestamp": 1795426019263
+    },
+    "8.4 Write property test for UUID v4 formatting": {
+      "status": "passed",
+      "lastRunTimestamp": 1795426559177
+    },
+    "8.5 Write property test for stable Device_ID resolution": {
+      "status": "passed",
+      "lastRunTimestamp": 1795426572996
+    },
+    "8.6 Write property test for storage failure fallback": {
+      "status": "passed",
+      "lastRunTimestamp": 1795426649756
+    },
+    "10.4 Write property test for Tips update filtering": {
+      "status": "passed",
+      "lastRunTimestamp": 1795427094088
+    },
+    "5.3 Write property test for per-device incident log": {
+      "status": "passed",
+      "lastRunTimestamp": 1795427110121
+    },
+    "5.4 Write property test for create/list round trip": {
+      "status": "passed",
+      "lastRunTimestamp": 1795427110827
+    },
+    "5.2 Write property test for invalid Device_IDs": {
+      "status": "passed",
+      "lastRunTimestamp": 1795427141746
+    }
+  },
+  "executionHistory": {
+    "1.1 Add server dev dependencies and test script": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424228538
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424241945
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424810831
+      }
+    ],
+    "2.1 Create `campussos/server/src/lib/deviceId.js`": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424228749
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424818442
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424930804
+      }
+    ],
+    "2.2 Create `campussos/server/src/lib/incidentInput.js`": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424229048
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425384797
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425640843
+      }
+    ],
+    "2.5 Create `campussos/server/src/lib/rooms.js`": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424229249
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424819297
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424931382
+      }
+    ],
+    "3.1 Add `deviceId`, index, and `toJSON` transform in `campussos/server/src/models/Incident.js`": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424229416
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424820471
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424932589
+      }
+    ],
+    "4.1 Create `campussos/server/src/socket.js`": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424229560
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425384997
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425641244
+      }
+    ],
+    "4.3 Create `campussos/server/src/app.js` and slim down `src/index.js`": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424229734
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425915205
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795426508812
+      }
+    ],
+    "5.1 Rewrite route auth and handlers in `campussos/server/src/routes/incidents.js`": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424229942
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795426673944
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795427012081
+      }
+    ],
+    "6. Checkpoint - Ensure all server tests pass": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424230084
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795427617444
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795427677118
+      }
+    ],
+    "7.1 Add `reporterLabel` and use it in the dashboard": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424230228
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424243197
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424811296
+      }
+    ],
+    "8.1 Install mobile dependencies and test tooling": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424230388
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424243857
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424811813
+      }
+    ],
+    "8.2 Create `campussos-mobile/src/storage.js`": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424230530
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424821616
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424933764
+      }
+    ],
+    "8.3 Create `campussos-mobile/src/device/deviceId.js`": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424230763
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425385718
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425641521
+      }
+    ],
+    "8.7 Create `campussos-mobile/src/DeviceContext.js` and mount it": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424230908
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425915879
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795426509126
+      }
+    ],
+    "9.1 Update `campussos-mobile/src/api.js`": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424231092
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424822459
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424934664
+      }
+    ],
+    "9.3 Create `campussos-mobile/src/sms.js`": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424231250
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424948114
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425180232
+      }
+    ],
+    "10.1 Update `campussos-mobile/src/screens/HomeScreen.js`": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424231402
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425386928
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425642558
+      }
+    ],
+    "10.2 Update `campussos-mobile/src/screens/SosFormScreen.js`": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424231561
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795426674933
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795427014269
+      }
+    ],
+    "10.3 Update `campussos-mobile/src/screens/TipsScreen.js`": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424231753
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795426676142
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795427015522
+      }
+    ],
+    "10.5 Update `campussos-mobile/src/screens/LogScreen.js`": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424231946
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795426677322
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795427016355
+      }
+    ],
+    "11.1 Finalize `campussos-mobile/App.js` and delete auth modules": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424232093
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795427022935
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795427277373
+      }
+    ],
+    "12. Final checkpoint - Ensure all tests pass": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424232225
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795427683065
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795427802485
+      }
+    ],
+    "1. Set up server test tooling": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424811132
+      }
+    ],
+    "7. Update the web dashboard reporter label": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424811476
+      }
+    ],
+    "3. Update the Incident model": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795424932853
+      }
+    ],
+    "9. Update mobile API and SMS helpers": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425180485
+      }
+    ],
+    "7.2 Add Vitest and write property test for reporter label": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425214440
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425258846
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425375818
+      }
+    ],
+    "2.3 Write property test for valid submissions": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425220919
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425916684
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795426509273
+      }
+    ],
+    "2.4 Write property test for invalid category or location": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425221297
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425918012
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795426509977
+      }
+    ],
+    "2.6 Write property test for update emit targets": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425222219
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425387730
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425643127
+      }
+    ],
+    "3.2 Write property test for incident payload shape": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425223330
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425652123
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425785078
+      }
+    ],
+    "4.2 Write property test for socket room assignment": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425224179
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425918742
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795426510792
+      }
+    ],
+    "5.2 Write property test for invalid Device_IDs": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425225333
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795427024019
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795427277903
+      }
+    ],
+    "5.3 Write property test for per-device incident log": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425226641
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795427025257
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795427278182
+      }
+    ],
+    "5.4 Write property test for create/list round trip": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425227350
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795427026472
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795427279197
+      }
+    ],
+    "5.5 Write server integration tests for incidents and sockets": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425228560
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795427285874
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795427607429
+      }
+    ],
+    "5.6 Write server regression tests for auth, legacy data, and SMS": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425229802
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795427286980
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795427608639
+      }
+    ],
+    "8.4 Write property test for UUID v4 formatting": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425230572
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795426516809
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795426665606
+      }
+    ],
+    "8.5 Write property test for stable Device_ID resolution": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425231765
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795426517863
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795426666515
+      }
+    ],
+    "8.6 Write property test for storage failure fallback": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425233025
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795426518817
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795426667424
+      }
+    ],
+    "8.8 Write unit tests for `DeviceProvider`": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425233714
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795426678130
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795427013059
+      }
+    ],
+    "9.2 Write property test for delivery-failure classification": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425234960
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425652454
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425785593
+      }
+    ],
+    "9.4 Write property test for SMS body round trip": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425236238
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425652755
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425907859
+      }
+    ],
+    "10.4 Write property test for Tips update filtering": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425237004
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795427027203
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795427279484
+      }
+    ],
+    "11.2 Write app startup, navigation, and smoke tests": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425238182
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795427288034
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795427609855
+      }
+    ],
+    "11.3 Write mobile screen tests": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425239005
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795427288856
+      },
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795427610588
+      }
+    ],
+    "2. Implement server pure helpers": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795425641985
+      }
+    ],
+    "4. Split server startup and move socket auth": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795426509461
+      }
+    ],
+    "8. Build mobile Device_ID foundation": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795426509717
+      }
+    ],
+    "5. Update incident routes": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795427012360
+      }
+    ],
+    "10. Move mobile screens off login": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795427016570
+      }
+    ],
+    "11. Remove login and wire the final navigation": [
+      {
+        "executionId": "347a8186-a24b-452f-a617-c5e400c8dc6c",
+        "chatSessionId": "sess_72220b12-a80e-415d-9e29-8ddd5e976377",
+        "timestamp": 1795427278449
+      }
+    ]
+  }
+}

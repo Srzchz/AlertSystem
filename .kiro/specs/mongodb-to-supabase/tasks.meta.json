@@ -1,0 +1,423 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1. Write bug condition exploration test": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443032262
+      },
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443057116
+      }
+    ],
+    "2.1 Create `test/helpers/store.js` with its MongoDB body": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443032536
+      }
+    ],
+    "2.2 Create `test/helpers/model.js`": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443032854
+      }
+    ],
+    "3. Write deliberate-change exploration test": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443033348
+      }
+    ],
+    "4. Write preservation property test for creates (BEFORE implementing fix)": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443033763
+      }
+    ],
+    "5. Write preservation property test for reads (BEFORE implementing fix)": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443034096
+      }
+    ],
+    "6. Write preservation property test for updates (BEFORE implementing fix)": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443034511
+      }
+    ],
+    "7. Write preservation property test for accounts and tokens (BEFORE implementing fix)": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443034887
+      }
+    ],
+    "8. Write preservation test for the seed script (BEFORE implementing fix)": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443035250
+      }
+    ],
+    "9. Move the existing database-backed suites onto the store harness (BEFORE implementing fix)": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443036298
+      }
+    ],
+    "10. Checkpoint - Unfixed baseline": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443036490
+      }
+    ],
+    "11.1 Add the `pg` dependency": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443036679
+      }
+    ],
+    "11.2 Move the enum lists to `src/lib/enums.js`": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443036883
+      }
+    ],
+    "11.3 Add `server/db/schema.sql`": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443037065
+      }
+    ],
+    "12.1 Create `src/db/client.js` and `src/db/pg.js`": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443037239
+      }
+    ],
+    "12.2 Create `src/db/ids.js`": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443037490
+      }
+    ],
+    "12.3 Create `src/db/cast.js` and `src/db/fields.js`": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443037743
+      }
+    ],
+    "12.4 Create `src/db/serialize.js`": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443037931
+      }
+    ],
+    "12.5 Create `src/db/users.js`": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443038138
+      }
+    ],
+    "12.6 Create `src/db/incidents.js`": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443038315
+      }
+    ],
+    "13. Checkpoint - Data layer added, nothing wired yet": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443038490
+      }
+    ],
+    "14.1 Switch `src/index.js` to Supabase": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443038671
+      }
+    ],
+    "14.2 Update the error handler in `src/app.js`": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443038856
+      }
+    ],
+    "15.1 Switch `src/middleware/auth.js`": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443039036
+      }
+    ],
+    "15.2 Switch `src/routes/auth.js`": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443039246
+      }
+    ],
+    "15.3 Switch `POST /` and `GET /mine` in `src/routes/incidents.js`": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443039666
+      }
+    ],
+    "15.4 Switch `GET /` and `PATCH /:id` in `src/routes/incidents.js`": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443039940
+      }
+    ],
+    "15.5 Switch `src/routes/sms.js`": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443040125
+      }
+    ],
+    "16. Fix step 5: switch `src/seed.js`": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443040327
+      }
+    ],
+    "17.1 Create `migration/map.js`": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443040509
+      }
+    ],
+    "17.2 Create `migration/run.js` and `migration/report.js`": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443040714
+      }
+    ],
+    "17.3 Create `migration/source.js` and `migration/cli.js`, and add the `migrate:mongo` script": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443040969
+      }
+    ],
+    "18.1 Switch `test/helpers/store.js` to its PGlite body": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443041316
+      }
+    ],
+    "18.2 Port `test/integration.test.js`": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443041556
+      }
+    ],
+    "18.3 Port `test/regression.test.js`": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443041875
+      }
+    ],
+    "18.4 Port `test/incidents.mine.property.test.js`": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443042052
+      }
+    ],
+    "18.5 Port `test/incidents.roundtrip.property.test.js`": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443042247
+      }
+    ],
+    "18.6 Port `test/deviceId.invalid.property.test.js`": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443042438
+      }
+    ],
+    "18.7 Port `test/incidentInput.valid.property.test.js` and `test/incidentInput.invalid.property.test.js`": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443042626
+      }
+    ],
+    "18.8 Rewrite `test/incident.property.test.js` for the serializer": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443042806
+      }
+    ],
+    "18.9 Port `test/rooms.property.test.js`": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443042996
+      }
+    ],
+    "18.10 Delete `src/models/User.js` and `src/models/Incident.js`": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443043177
+      }
+    ],
+    "19. Checkpoint - Fixed store, old suites ported": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443043675
+      }
+    ],
+    "20.1 Write `test/cast.test.js`": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443043947
+      }
+    ],
+    "20.2 Write `test/db.adapter.test.js`": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443044140
+      }
+    ],
+    "20.3 Write `test/schema.test.js`": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443044422
+      }
+    ],
+    "20.4 Write `test/migration.map.property.test.js`": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443044605
+      }
+    ],
+    "20.5 Write `test/migration.run.property.test.js`": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443044811
+      }
+    ],
+    "20.6 Write `test/migration.cli.test.js`": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443045010
+      }
+    ],
+    "20.7 Write `test/secrets.test.js`": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443045297
+      }
+    ],
+    "21. Fix step 9: rewrite `server/.env.example` with placeholders only": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443045845
+      }
+    ],
+    "22. Fix step 10: update `campussos/README.md`": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443046117
+      }
+    ],
+    "23. Fix step 11: update `src/lib/deviceId.js`": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443046311
+      }
+    ],
+    "24. Fix step 12: remove mongoose and mongodb-memory-server": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443046600
+      }
+    ],
+    "25.1 Verify bug condition exploration test now passes": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443046795
+      }
+    ],
+    "25.2 Verify deliberate-change test now passes": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443047080
+      }
+    ],
+    "25.3 Verify preservation tests still pass": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443047273
+      }
+    ],
+    "25.4 Verify the ported suites and the migration tests": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443047744
+      }
+    ],
+    "26. Checkpoint - Ensure all tests pass": [
+      {
+        "executionId": "4ad53a68-e3c2-4f3e-9e0a-17f7f288c334",
+        "chatSessionId": "sess_5fb2c161-9c40-492d-94dc-82cb8fbfcf10",
+        "timestamp": 1795443047996
+      }
+    ]
+  }
+}

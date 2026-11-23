@@ -33,3 +33,9 @@ export const timeAgo = (d) => {
   if (s < 86400) return `${Math.floor(s / 3600)} h ago`;
   return fmtTime(d);
 };
+export const ANONYMOUS_REPORTER = 'Anonymous mobile reporter';
+export const reporterLabel = (incident) => {
+  const name = incident?.reporter?.name;
+  if (typeof name === 'string' && name.length > 0) return name;
+  return incident?.source === 'APP' ? ANONYMOUS_REPORTER : 'Unregistered number';
+};

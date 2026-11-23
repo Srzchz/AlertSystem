@@ -1,8 +1,7 @@
 import React, { useEffect, useRef } from 'react';
-import { Alert, Animated, Easing, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Animated, Easing, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useAuth } from '../AuthContext';
 import { colors, radius, shadow } from '../theme';
 
 const SIZE = 190;
@@ -42,12 +41,7 @@ function Tile({ icon, title, sub, onPress, tint, bg }) {
 }
 
 export default function HomeScreen({ navigation }) {
-  const { user, logout } = useAuth();
   const insets = useSafeAreaInsets();
-  const confirmLogout = () => Alert.alert('Log out?', 'You will need to log in again to send an alert.', [
-    { text: 'Stay logged in', style: 'cancel' },
-    { text: 'Log out', style: 'destructive', onPress: logout },
-  ]);
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.paper }}>
@@ -57,11 +51,8 @@ export default function HomeScreen({ navigation }) {
             <View style={s.brandIcon}><Ionicons name="shield-checkmark" size={18} color={colors.green} /></View>
             <Text style={s.brandText}>CampusSOS</Text>
           </View>
-          <TouchableOpacity style={s.iconBtn} onPress={confirmLogout} accessibilityLabel="Log out" hitSlop={8}>
-            <Ionicons name="log-out-outline" size={20} color="#fff" />
-          </TouchableOpacity>
         </View>
-        <Text style={s.hello}>Hi, {user.name.split(' ')[0]}</Text>
+        <Text style={s.hello}>Hi there</Text>
         <Text style={s.helloSub}>Stay calm. Help is one tap away.</Text>
         <View style={s.goldBar} />
       </View>
@@ -100,7 +91,6 @@ const s = StyleSheet.create({
   brand: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   brandIcon: { width: 30, height: 30, borderRadius: 15, backgroundColor: colors.gold, alignItems: 'center', justifyContent: 'center' },
   brandText: { color: '#fff', fontWeight: '800', fontSize: 17 },
-  iconBtn: { width: 40, height: 40, borderRadius: 20, backgroundColor: 'rgba(255,255,255,0.16)', alignItems: 'center', justifyContent: 'center' },
   hello: { color: '#fff', fontSize: 30, fontWeight: '800' },
   helloSub: { color: 'rgba(255,255,255,0.85)', fontSize: 15, marginTop: 4 },
   goldBar: { width: 44, height: 4, borderRadius: 2, backgroundColor: colors.gold, marginTop: 14 },

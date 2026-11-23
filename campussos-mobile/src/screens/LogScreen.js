@@ -1,13 +1,15 @@
-import React, { useCallback, useState } from 'react';
-import { ActivityIndicator, FlatList, RefreshControl, StyleSheet, Text, View } from 'react-native';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { ActivityIndicator, FlatList, RefreshControl, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useFocusEffect } from '@react-navigation/native';
-import { useAuth } from '../AuthContext';
+import { useDevice } from '../DeviceContext';
 import { api } from '../api';
 import { CATEGORIES, CATEGORY_ICONS, STATUS_LABELS, labelOf } from '../data/options';
 import { colors, radius, shadow } from '../theme';
 
-const dur = (sec) => (sec == null ? 'Not yet' : sec < 60 ? `${sec}s` : `${Math.floor(sec / 60)}m ${sec % 60}s`);
+const LOG_TIMEOUT_MS = 15000;
+
+const dur = (sec) => (sec == null ? 'Not yet acknowledged' : sec < 60 ? `${sec}s` : `${Math.floor(sec / 60)}m ${sec % 60}s`);
 
 const PILL = {
   PENDING: [colors.goldSoft, colors.goldInk],
@@ -29,30 +31,82 @@ function Row({ icon, label, value }) {
 }
 
 export default function LogScreen() {
-  const { token } = useAuth();
+  const { getDeviceId } = useDevice();
   const [items, setItems] = useState(null);
   const [error, setError] = useState('');
   const [refreshing, setRefreshing] = useState(false);
 
-  const load = useCallback(async () => {
-    try { setItems(await api('/incidents/mine', { token })); setError(''); }
-    catch (e) { setError(e.offline ? 'You are offline. Connect to see your log.' : e.message); }
-  }, [token]);
+  // Guards: skip state updates after unmount, and share one in-flight request
+  // so a double-run focus effect or a pull-to-refresh during a load does not
+  // send a second request.
+  const mounted = useRef(true);
+  const inFlight = useRef(null);
+  useEffect(() => {
+    mounted.current = true;
+    return () => { mounted.current = false; };
+  }, []);
+
+  const load = useCallback(() => {
+    if (inFlight.current) return inFlight.current;
+    const run = (async () => {
+      try {
+        const deviceId = await getDeviceId();
+        const data = await api('/incidents/mine', {
+          headers: { 'X-Device-Id': deviceId },
+          timeoutMs: LOG_TIMEOUT_MS,
+        });
+        if (!mounted.current) return;
+        setItems(Array.isArray(data) ? data : []);
+        setError('');
+      } catch (e) {
+        if (!mounted.current) return;
+        setError(e?.offline ? 'You are offline. Connect to see your log.' : e?.message || 'Request failed');
+      } finally {
+        inFlight.current = null;
+      }
+    })();
+    inFlight.current = run;
+    return run;
+  }, [getDeviceId]);
+
   useFocusEffect(useCallback(() => { load(); }, [load]));
+
+  const onRefresh = useCallback(async () => {
+    setRefreshing(true);
+    await load();
+    if (mounted.current) setRefreshing(false);
+  }, [load]);
 
   if (!items && !error) return <ActivityIndicator style={{ marginTop: 40 }} color={colors.green} />;
   return (
     <FlatList
       contentContainerStyle={{ padding: 16, paddingBottom: 32, flexGrow: 1 }}
-      data={items || []}
+      data={error ? [] : items || []}
       keyExtractor={(i) => i._id}
-      refreshControl={<RefreshControl refreshing={refreshing} tintColor={colors.green} colors={[colors.green]} onRefresh={async () => { setRefreshing(true); await load(); setRefreshing(false); }} />}
+      refreshControl={<RefreshControl refreshing={refreshing} tintColor={colors.green} colors={[colors.green]} onRefresh={onRefresh} />}
       ListEmptyComponent={
-        <View style={s.empty}>
-          <View style={s.emptyIcon}><Ionicons name={error ? 'cloud-offline-outline' : 'document-text-outline'} size={34} color={colors.green} /></View>
-          <Text style={s.emptyTitle}>{error ? 'Cannot load your log' : 'No incidents yet'}</Text>
-          <Text style={s.emptyText}>{error || 'Alerts you send will be listed here.'}</Text>
-        </View>
+        error ? (
+          <View style={s.empty}>
+            <View style={s.emptyIcon}><Ionicons name="cloud-offline-outline" size={34} color={colors.green} /></View>
+            <Text style={s.emptyTitle}>Cannot load your log</Text>
+            <Text style={s.emptyText}>{error}</Text>
+            <TouchableOpacity
+              style={s.retry}
+              onPress={() => { load(); }}
+              accessibilityRole="button"
+              accessibilityLabel="Retry"
+            >
+              <Ionicons name="refresh" size={18} color="#fff" />
+              <Text style={s.retryText}>Retry</Text>
+            </TouchableOpacity>
+          </View>
+        ) : (
+          <View style={s.empty}>
+            <View style={s.emptyIcon}><Ionicons name="document-text-outline" size={34} color={colors.green} /></View>
+            <Text style={s.emptyTitle}>No alerts yet</Text>
+            <Text style={s.emptyText}>No alerts have been sent from this phone.</Text>
+          </View>
+        )
       }
       renderItem={({ item: i }) => {
         const [pbg, pfg] = PILL[i.status] || PILL.CANCELLED;
@@ -65,7 +119,7 @@ export default function LogScreen() {
                 <Text style={s.title}>{labelOf(CATEGORIES, i.category)}</Text>
                 <Text style={s.meta}>{new Date(i.createdAt).toLocaleString()}</Text>
               </View>
-              <View style={[s.pill, { backgroundColor: pbg }]}><Text style={[s.pillText, { color: pfg }]}>{STATUS_LABELS[i.status]}</Text></View>
+              <View style={[s.pill, { backgroundColor: pbg }]}><Text style={[s.pillText, { color: pfg }]}>{STATUS_LABELS[i.status] || i.status}</Text></View>
             </View>
             <View style={s.divider} />
             <Row icon="location-outline" label="Location" value={where} />
@@ -95,4 +149,6 @@ const s = StyleSheet.create({
   emptyIcon: { width: 72, height: 72, borderRadius: 36, backgroundColor: colors.greenSoft, alignItems: 'center', justifyContent: 'center', marginBottom: 14 },
   emptyTitle: { fontSize: 18, fontWeight: '800', color: colors.ink },
   emptyText: { color: colors.muted, textAlign: 'center', marginTop: 6, fontSize: 15 },
+  retry: { flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 16, backgroundColor: colors.green, paddingHorizontal: 20, paddingVertical: 10, borderRadius: radius.lg },
+  retryText: { color: '#fff', fontSize: 15, fontWeight: '800' },
 });

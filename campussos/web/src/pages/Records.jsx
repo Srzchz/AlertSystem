@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { api } from '../api.js';
-import { CATEGORY_LABELS, PATIENT_STATUS_LABELS, STATUS_LABELS, fmtDuration, fmtTime } from '../labels.js';
+import { CATEGORY_LABELS, PATIENT_STATUS_LABELS, STATUS_LABELS, fmtDuration, fmtTime, reporterLabel } from '../labels.js';
 
 function Detail({ incident, onSaved }) {
   const [status, setStatus] = useState(incident.status);
@@ -81,7 +81,7 @@ export default function Records() {
               <Fragment key={i._id}>
                 <tr className="clickable" onClick={() => setOpenId(openId === i._id ? null : i._id)}>
                   <td>{fmtTime(i.createdAt)}</td>
-                  <td>{i.patient?.name || i.reporter?.name || 'Unknown'}</td>
+                  <td>{i.patient?.name || reporterLabel(i)}</td>
                   <td>{CATEGORY_LABELS[i.category]}</td>
                   <td>{PATIENT_STATUS_LABELS[i.patientStatus]}</td>
                   <td>{fmtDuration(i.responseTimeSec)}</td>

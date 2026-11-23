@@ -1,39 +1,36 @@
 import { Router } from 'express';
-import Incident, { CATEGORIES } from '../models/Incident.js';
+import Incident from '../models/Incident.js';
 import { requireAuth, requireRole } from '../middleware/auth.js';
+import { buildAppIncident } from '../lib/incidentInput.js';
+import { normalizeDeviceId } from '../lib/deviceId.js';
+import { updateTargets } from '../lib/rooms.js';
 
 const wrap = (fn) => (req, res, next) => fn(req, res, next).catch(next);
 
 export default function incidentRoutes(io) {
   const router = Router();
-  router.use(requireAuth);
 
-  // User sends an SOS
+  // Mobile app sends an SOS (anonymous, identified by Device_ID)
   router.post('/', wrap(async (req, res) => {
-    const { forSelf, patient, nature, category, patientStatus, location } = req.body || {};
-    if (!CATEGORIES.includes(category)) return res.status(400).json({ error: 'Choose an alert category' });
-    if (!location || typeof location.lat !== 'number' || typeof location.lng !== 'number')
-      return res.status(400).json({ error: 'Location is required' });
+    const result = buildAppIncident(req.body);
+    if (!result.ok) return res.status(400).json({ error: result.error });
 
-    const incident = await Incident.create({
-      reporter: req.user._id,
-      forSelf: forSelf !== false,
-      patient: forSelf === false ? patient : { ...(patient || {}), name: req.user.name },
-      nature, category, patientStatus, location, source: 'APP',
-    });
+    const incident = await Incident.create(result.doc);
     const full = await incident.populate('reporter', 'name phone email');
     io.to('responders').emit('incident:new', full);
     res.status(201).json(full);
   }));
 
-  // The current user's own incident log
+  // Incident log for one device (Device_ID sent in the X-Device-Id header)
   router.get('/mine', wrap(async (req, res) => {
-    const items = await Incident.find({ reporter: req.user._id }).sort({ createdAt: -1 }).limit(100);
+    const deviceId = normalizeDeviceId(req.get('X-Device-Id'));
+    if (deviceId === null) return res.status(400).json({ error: 'Device ID is required' });
+    const items = await Incident.find({ deviceId }).sort({ createdAt: -1 }).limit(100);
     res.json(items);
   }));
 
   // Responders: all records with optional filters
-  router.get('/', requireRole('responder', 'admin'), wrap(async (req, res) => {
+  router.get('/', requireAuth, requireRole('responder', 'admin'), wrap(async (req, res) => {
     const { status, category, from, to } = req.query;
     const q = {};
     if (status) q.status = status;
@@ -48,7 +45,7 @@ export default function incidentRoutes(io) {
   }));
 
   // Responders: update status / outcome / notes
-  router.patch('/:id', requireRole('responder', 'admin'), wrap(async (req, res) => {
+  router.patch('/:id', requireAuth, requireRole('responder', 'admin'), wrap(async (req, res) => {
     const incident = await Incident.findById(req.params.id);
     if (!incident) return res.status(404).json({ error: 'Incident not found' });
     const { status, outcome, notes } = req.body || {};
@@ -68,8 +65,8 @@ export default function incidentRoutes(io) {
       { path: 'reporter', select: 'name phone email' },
       { path: 'handledBy', select: 'name' },
     ]);
-    io.to('responders').emit('incident:update', full);
-    if (incident.reporter) io.to(`user:${full.reporter._id}`).emit('incident:update', full);
+    // One emit per room, as before (responders, then user:<id>), plus device:<id>
+    for (const room of updateTargets(full)) io.to(room).emit('incident:update', full);
     res.json(full);
   }));
 

@@ -10,7 +10,8 @@ export const STATUSES = ['PENDING', 'ACKNOWLEDGED', 'EN_ROUTE', 'ON_SCENE', 'RES
 
 const incidentSchema = new mongoose.Schema(
   {
-    reporter: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // empty for unmatched SMS
+    reporter: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // empty for unmatched SMS and app alerts
+    deviceId: { type: String, trim: true, maxlength: 128 }, // anonymous mobile Device_ID; absent on SMS and older incidents
     forSelf: { type: Boolean, default: true }, // SOS as patient vs. SOS for others
     patient: {
       name: String,
@@ -40,5 +41,16 @@ const incidentSchema = new mongoose.Schema(
 
 incidentSchema.index({ createdAt: -1 });
 incidentSchema.index({ reporter: 1, createdAt: -1 });
+incidentSchema.index({ deviceId: 1, createdAt: -1 });
+
+// Shapes both HTTP responses (res.json) and Socket.IO payloads, which call toJSON().
+// A missing reporter, or one whose User was deleted (populates to null), becomes null.
+incidentSchema.set('toJSON', {
+  transform: (_doc, ret) => {
+    ret.reporter = ret.reporter ?? null;
+    ret.deviceId = ret.deviceId ?? null;
+    return ret;
+  },
+});
 
 export default mongoose.model('Incident', incidentSchema);

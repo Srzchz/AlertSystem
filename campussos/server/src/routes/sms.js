@@ -6,7 +6,9 @@ import User from '../models/User.js';
 export function parseSosSms(text = '') {
   const [prefix, category, patientStatus, sex, age, coords, ...note] = text.trim().split('|');
   if ((prefix || '').toUpperCase() !== 'SOS') return null;
-  const [lat, lng] = (coords || '').split(',').map(Number);
+  // A blank or malformed coords segment (empty, whitespace, or missing a part) means no location.
+  const parts = (coords || '').split(',');
+  const [lat, lng] = parts.length >= 2 && parts[0].trim() && parts[1].trim() ? parts.map(Number) : [];
   return {
     category: CATEGORIES.includes(category) ? category : 'OTHER',
     patientStatus: PATIENT_STATUSES.includes(patientStatus) ? patientStatus : 'UNKNOWN',
